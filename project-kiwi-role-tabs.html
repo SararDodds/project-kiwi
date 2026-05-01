@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What this means for your role</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; padding: 24px; }
+  h2 { font-size: 20px; font-weight: 600; color: #e8a020; margin-bottom: 6px; }
+  .intro { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 18px; }
+  .role-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .role-tab {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 100px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background: #f5f5f5;
+    color: #444;
+    transition: all 0.15s;
+  }
+  .role-tab:hover { background: #e8e8e8; }
+  .role-tab.active { background: #1a2e4a; color: #fff; border-color: #1a2e4a; }
+  .role-panel { display: none; }
+  .role-panel.active { display: block; }
+  .role-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .role-label.field    { background: #e1f5ee; color: #0f6e56; }
+  .role-label.super    { background: #e6f1fb; color: #185fa5; }
+  .role-label.admin    { background: #faeeda; color: #854f0b; }
+  .role-label.manager  { background: #eeedfe; color: #3c3489; }
+  .role-panel ul { padding-left: 20px; }
+  .role-panel ul li { font-size: 14px; color: #444; line-height: 1.85; margin-bottom: 2px; }
+  .closing {
+    margin-top: 20px;
+    padding: 12px 16px;
+    border-left: 3px solid #1a2e4a;
+    background: #f4f6f9;
+    font-size: 13px;
+    color: #3a4e63;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<h2>What this means for your role</h2>
+<p class="intro">Select your role below to see what's specifically changing for you.</p>
+
+<div class="role-tabs">
+  <div class="role-tab active" onclick="showRole('field', this)">Field teams (technicians)</div>
+  <div class="role-tab" onclick="showRole('super', this)">Supervisors &amp; forepersons</div>
+  <div class="role-tab" onclick="showRole('admin', this)">Admin &amp; service desk</div>
+  <div class="role-tab" onclick="showRole('manager', this)">Managers &amp; SDMs</div>
+</div>
+
+<div class="role-panel active" id="panel-field">
+  <span class="role-label field">Field teams — technicians</span>
+  <ul>
+    <li>Raise requests in Touchstone on site instead of relying on others</li>
+    <li>Complete work against fewer, larger work orders (not daily jobs)</li>
+    <li>Record all visits, time, and notes against the same work order</li>
+    <li>No "Take Ownership" — work is assigned to you directly</li>
+    <li>If work changes, raise a new request or contact Service Desk</li>
+    <li>Some transition work may be managed via paper or spreadsheets</li>
+    <li>System is similar to today, but with more structured workflows</li>
+  </ul>
+</div>
+
+<div class="role-panel" id="panel-super">
+  <span class="role-label super">Supervisors &amp; forepersons</span>
+  <ul>
+    <li>Work is assigned to individuals, not owner groups</li>
+    <li>You are responsible for reassigning work (e.g. leave coverage)</li>
+    <li>Service requests drive KPIs, not individual work orders</li>
+    <li>Critical jobs must be closed quickly and re-raised if needed</li>
+    <li>Less flexibility to edit work — errors may require new work orders</li>
+    <li>Greater visibility via Power BI reporting</li>
+    <li>Delegation of Authority (DOA) now sits with Service Delivery Managers</li>
+  </ul>
+</div>
+
+<div class="role-panel" id="panel-admin">
+  <span class="role-label admin">Admin &amp; service desk</span>
+  <ul>
+    <li>All work orders are created via Service Desk</li>
+    <li>Subcontractor work orders now auto-generate POs in NAV</li>
+    <li>Materials and consumables are managed directly in NAV</li>
+    <li>During transition, you will manage manual spreadsheets for open work</li>
+    <li>Responsible for closing legacy work orders in MaxiCloud</li>
+    <li>Apply Schedule of Rates (SOR) to make work billable</li>
+    <li>Reporting shifts from Start Centres to Power BI + saved queries</li>
+  </ul>
+</div>
+
+<div class="role-panel" id="panel-manager">
+  <span class="role-label manager">Managers &amp; SDMs</span>
+  <ul>
+    <li>Approval authority is centralised (DOA) at SDM level</li>
+    <li>KPIs are measured at the service request level</li>
+    <li>Improved visibility through Power BI reporting</li>
+    <li>More consistent processes across contracts and regions</li>
+    <li>Focus on performance, compliance, and data quality</li>
+    <li>Oversight of transition, workload balancing, and issue resolution during hypercare</li>
+  </ul>
+</div>
+
+<div class="closing">While the systems and processes are changing, the work we do and our service commitments remain the same.</div>
+
+<script>
+  function showRole(role, el) {
+    document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.role-panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('panel-' + role).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
